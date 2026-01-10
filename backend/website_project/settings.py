@@ -37,11 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
+=======
+    'rest_framework',
+    'corsheaders',
+    'GG'
+
+>>>>>>> 1a5d553bd6dbd547a21595948dd98dc8fd5a1192
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+<<<<<<< HEAD
+=======
+    "corsheaders.middleware.CorsMiddleware",
+>>>>>>> 1a5d553bd6dbd547a21595948dd98dc8fd5a1192
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -49,6 +60,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+<<<<<<< HEAD
+=======
+
+CORS_ALLOWED_ORIGINS = [
+    "http://192.168.3.190:3000",
+    "http://localhost:3000",
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+>>>>>>> 1a5d553bd6dbd547a21595948dd98dc8fd5a1192
 ROOT_URLCONF = 'website_project.urls'
 
 TEMPLATES = [

@@ -1,0 +1,40 @@
+# --- Core Django + REST Framework ---
+Django==6.0                        # Latest stable major release (Dec 2025) :contentReference[oaicite:1]{index=1}
+djangorestframework==3.16.1        # Latest DRF version :contentReference[oaicite:2]{index=2}
+django-cors-headers==4.9.0         # Latest CORS package version :contentReference[oaicite:3]{index=3}
+
+# --- Database & ORM helpers ---
+psycopg2-binary>=2.9.9             # PostgreSQL driver (latest compatible) 
+dj-database-url                    # DB URL config helper
+django-environ                    # Environment settings helper
+
+# --- Data & Analysis ---
+pandas                           # Latest pandas (auto installs newest) :contentReference[oaicite:4]{index=4}
+numpy                            # Latest numpy (auto installs newest)
+matplotlib                       # Latest matplotlib (auto installs newest)
+seaborn                          # Latest seaborn (auto installs newest)
+openpyxl
+
+# --- Authentication & Security ---
+djangorestframework-simplejwt    # Latest Simple JWT (auto installs newest) :contentReference[oaicite:5]{index=5}
+bcrypt                           # Latest bcrypt (auto installs newest)
+python-decouple==3.8             # Latest stable python-decouple :contentReference[oaicite:6]{index=6}
+
+# --- API & Utility Libraries ---
+requests                         # Latest requests (auto installs newest)
+httpx                            # Latest httpx (auto installs newest)
+Pillow                           # Latest Pillow (auto installs newest)
+python-dateutil                  # Latest python-dateutil (auto installs newest)
+celery                           # Latest Celery version (5.5.x series) :contentReference[oaicite:7]{index=7}
+redis                            # Latest redis python client (auto installs newest)
+
+# --- Developer Tools ---
+black                            # Latest code formatter (auto installs newest)
+flake8                           # Latest linting tool
+ipython                          # Latest enhanced Python shell
+pytest                           # Latest test framework
+pytest-django                    # Latest Django test plugin
+
+# --- Deployment & Production ---
+gunicorn                        # Latest WSGI server
+whitenoise                      # Latest static files server :contentReference[oaicite:8]{index=8}
