@@ -1,0 +1,42 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@cometchat/calls-sdk-javascript": "^4.2.1",
+    "@cometchat/chat-sdk-javascript": "^4.1.5",
+    "@cometchat/chat-uikit-react": "^6.2.3",
+    "@tailwindcss/vite": "^4.1.17",
+    "aos": "^2.3.4",
+    "axios": "^1.13.2",
+    "bootstrap": "^5.3.7",
+    "bootstrap-icons": "^1.13.1",
+    "framer-motion": "^12.23.24",
+    "intl-tel-input": "^25.13.1",
+    "lucide-react": "^0.562.0",
+    "next": "^15.4.2",
+    "react": "^19.1.0",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.1.0",
+    "react-google-autocomplete": "^2.7.5",
+    "react-icons": "^5.5.0",
+    "react-password-checklist": "^1.8.1",
+    "react-player": "^3.3.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/node": "25.0.3",
+    "autoprefixer": "^10.4.22",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.2",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17"
+  }
+}
