@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAppContext } from "../context/AppContext";
@@ -12,7 +12,7 @@ export default function ProjectsPage() {
     budget: "",
     skills: "",
     timeline: "",
-    date_posted: ""
+    date_posted: "",
   });
 
   const [filterDate, setFilterDate] = useState("");
@@ -93,207 +93,111 @@ export default function ProjectsPage() {
   // 🔹 UI Rendering
   return (
     <>
-      <div
-        style={{
-          background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #764ba2 100%)",
-          minHeight: "100vh",
-          paddingTop: "40px",
-          paddingBottom: "40px",
-        }}
-      >
-        {/* ---------- POST PROJECT ---------- */}
-        <div className="container py-3">
-          <div className="flex justify-center">
-            <button
-              className="btn btn-dark"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseWidthExample"
-              aria-expanded="false"
-              aria-controls="collapseWidthExample"
-            >
-              Post a Project
-            </button>
-          </div>
+      <div class="p-4 border border-gray-300 rounded-lg w-64">
+        <h3 class="text-lg font-semibold mb-2">Filters</h3>
+        <p class="font-medium mb-2">Skills</p>
+        <ul class="space-y-2">
+          <li>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="skills"
+                value="frontend"
+                class="h-4 w-4 text-blue-600"
+              />
+              <span> Frontend Development</span>
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="skills"
+                value="backend"
+                class="h-4 w-4 text-blue-600"
+              />
+              <span> Backend Development</span>
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="skills"
+                value="backend"
+                class="h-4 w-4 text-blue-600"
+              />
+              <span> Full Stack Development</span>
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="skills"
+                value="uiux"
+                class="h-4 w-4 text-blue-600"
+              />
+              <span> UI/UX Development</span>
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="skills"
+                value="uiux"
+                class="h-4 w-4 text-blue-600"
+              />
+              <span> Mobile Application Development</span>
+            </label>
+          </li>
+          <li>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="skills"
+                value="uiux"
+                class="h-4 w-4 text-blue-600"
+              />
+              <span> Data Analytics</span>
+            </label>
+          </li>
+        </ul>
+        <div class="experience-filter">
+          <h3>Experience Level</h3>
 
-          <div style={{ minHeight: 120 }}>
-            <div className="collapse collapse-horizontal" id="collapseWidthExample">
-              <div className="card shadow-sm p-4" style={{ width: 400 }}>
-                <h5 className="card-title mb-3 border-bottom pb-2">Project Details</h5>
-
-                <div className="mb-3">
-                  <label className="form-label">Name</label>
-                  <input
-                    type="text"
-                    name="Name"
-                    value={formData.Name}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="Enter your name"
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label className="form-label">Company Name</label>
-                  <input
-                    type="text"
-                    name="companyName"
-                    value={formData.companyName}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="Enter company name"
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label className="form-label">Description</label>
-                  <textarea
-                    name="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    className="form-control"
-                    rows="3"
-                    placeholder="Describe your project..."
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label className="form-label">Budget (₹)</label>
-                  <input
-                    type="number"
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="Enter budget"
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label className="form-label">Skills Required</label>
-                  <input
-                    type="text"
-                    name="skills"
-                    value={formData.skills}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="E.g. React, Django, API Integration"
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label className="form-label">Timeline (Days)</label>
-                  <input
-                    type="text"
-                    name="timeline"
-                    value={formData.timeline}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="E.g. 7 days"
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label className="form-label">Date Posted</label>
-                  <input
-                    type="date"
-                    name="date_posted"
-                    value={formData.date_posted}
-                    onChange={handleChange}
-                    className="form-control"
-                  />
-                </div>
-
-                <div className="text-end">
-                  <button className="btn btn-primary" onClick={handleSubmit}>
-                    Submit
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <label>
+            <input type="radio" name="experience" value="lt2" /> Less than 2
+            years
+          </label>
+          <br />
+          <label>
+            <input type="radio" name="experience" value="2to5" /> 2–5 years
+          </label>
+          <br />
+          <label>
+            <input type="radio" name="experience" value="gt5" /> More than 5
+            years
+          </label>
         </div>
 
-        {/* ---------- FILTER SECTION ---------- */}
-        <div className="container py-3">
-          <div className="flex justify-center">
-            <button
-              className="btn btn-primary"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseWidthFilter"
-              aria-expanded="false"
-              aria-controls="collapseWidthFilter"
-            >
-              Filter
-            </button>
-          </div>
+        <div class="budget-filter">
+          <h3>Budget</h3>
 
-          <div style={{ minHeight: 120 }}>
-            <div className="collapse collapse-horizontal" id="collapseWidthFilter">
-              <div className="card shadow-sm p-4" style={{ width: 400 }}>
-                <h5 className="card-title mb-3 border-bottom pb-2">Filter Projects</h5>
-
-                <div className="mb-3">
-                  <label className="form-label">Date Posted</label>
-                  <input
-                    type="date"
-                    name="filter_date"
-                    value={filterDate}
-                    onChange={handleFilterChange}
-                    className="form-control"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ---------- PROJECT LIST ---------- */}
-        <div className="container mt-4">
-          {projects.length === 0 ? (
-            <div className="text-center text-muted">No projects found.</div>
-          ) : (
-            projects.map((p) => (
-              <div key={p.id} className="row g-0 mb-3 border rounded">
-                <div
-                  className="col-sm-2 d-flex align-items-center justify-content-center border-end fw-bold"
-                  style={{ background: "#f8f9fa" }}
-                >
-                  {p.name}
-                </div>
-                <div className="col-sm-8 text-start ps-3 py-2">
-                  <div><strong>Project Description:</strong> {p.description}</div>
-                  <div><strong>Skillset:</strong> {p.skills}</div>
-                  <div><strong>Timeline:</strong> {p.timeline}</div>
-                  <div><strong>Budget:</strong> {p.budget}</div>
-                  <div><strong>Company:</strong> {p.company_name}</div>
-                  <div>
-                    <strong>Date Posted:</strong>{" "}
-                    {new Date(p.date_posted).toLocaleDateString("en-IN", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "numeric",
-                    })}
-                  </div>
-                </div>
-                <div
-                  className="col-sm-2 d-flex align-items-center justify-content-center border-start"
-                  style={{ background: "#f8f9fa" }}
-                >
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={() => handleClick(p)} // ✅ Pass project to handleClick
-                  >
-                    I'm Interested
-                  </button>
-                </div>
-              </div>
-            ))
-          )}
+          <label>
+            <input type="radio" name="experience" value="lt2" /> Below 10K
+          </label>
+          <br />
+          <label>
+            <input type="radio" name="experience" value="2to5" /> 10K-50K
+          </label>
+          <br />
+          <label>
+            <input type="radio" name="experience" value="gt5" /> Above 50K
+          </label>
         </div>
       </div>
     </>
   );
-}
+} 
