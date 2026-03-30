@@ -1,34 +1,10 @@
-<<<<<<< HEAD
-// src/app/projects/page.js
-
-export default function ProjectsPage() {
-  return (
-    <div className="container py-4">
-      {/* Add Project Button */}
-      <div className="d-flex justify-content-start mb-4">
-        <button type="button" className="btn btn-primary">
-          Add Project
-        </button>
-      </div>
-
-      {/* Projects Grid */}
-      <div className="row g-4">
-        {/* Card 1 */}
-        <div className="col-12 col-sm-6 col-md-4">
-          <div className="card h-100 shadow-sm">
-            <div className="card-body">
-              <h5 className="card-title">Build a Professional Website</h5>
-              <h6 className="card-subtitle mb-2 text-muted">Web Development</h6>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up the bulk
-                of the card’s content.
-              </p>
-=======
 'use client';
+export const dynamic = "force-dynamic";
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAppContext } from "../context/AppContext";
-import { useRouter } from "next/navigation"; // ✅ correct import for Next.js App Router
+import { useRouter } from "next/navigation";
 
 export default function ProjectsPage() {
   const [formData, setFormData] = useState({
@@ -45,23 +21,26 @@ export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
 
   const router = useRouter();
-  const { setNotifications } = useAppContext(); // ✅ global context access
+  const { setNotifications } = useAppContext();
 
-  // Fetch all projects on load
+  // ✅ SAFE CLIENT-ONLY FETCH
   useEffect(() => {
-    fetchProjects();
+    if (typeof window !== "undefined") {
+      fetchProjects();
+    }
   }, []);
 
-  // 🔹 Fetch projects (optionally filtered by date)
+  // 🔹 Fetch projects (SAFE)
   const fetchProjects = async (date = "") => {
     try {
       let url = "http://127.0.0.1:8000/api/projects/";
       if (date) url += `?date_posted=${date}`;
 
       const response = await axios.get(url);
-      setProjects(response.data);
+      setProjects(response.data || []);
     } catch (error) {
       console.error("Error fetching projects:", error);
+      setProjects([]); // ✅ prevent crash
     }
   };
 
@@ -91,6 +70,7 @@ export default function ProjectsPage() {
       });
 
       alert("Project details submitted!");
+
       setFormData({
         Name: "",
         companyName: "",
@@ -107,7 +87,7 @@ export default function ProjectsPage() {
     }
   };
 
-  // ✅ Pass info to another page through context
+  // 🔹 Pass info to another page
   const handleClick = (project) => {
     setNotifications({
       name: project.name,
@@ -116,7 +96,6 @@ export default function ProjectsPage() {
     router.push("/notifications");
   };
 
-  // 🔹 UI Rendering
   return (
     <>
       <div
@@ -236,23 +215,10 @@ export default function ProjectsPage() {
                   </button>
                 </div>
               </div>
->>>>>>> 1a5d553bd6dbd547a21595948dd98dc8fd5a1192
             </div>
           </div>
         </div>
 
-<<<<<<< HEAD
-        {/* Card 2 */}
-        <div className="col-12 col-sm-6 col-md-4">
-          <div className="card h-100 shadow-sm">
-            <div className="card-body">
-              <h5 className="card-title">E-commerce Platform</h5>
-              <h6 className="card-subtitle mb-2 text-muted">Full-stack</h6>
-              <p className="card-text">
-                Build a scalable online store with payment integration and product
-                management.
-              </p>
-=======
         {/* ---------- FILTER SECTION ---------- */}
         <div className="container py-3">
           <div className="flex justify-center">
@@ -284,27 +250,10 @@ export default function ProjectsPage() {
                   />
                 </div>
               </div>
->>>>>>> 1a5d553bd6dbd547a21595948dd98dc8fd5a1192
             </div>
           </div>
         </div>
 
-<<<<<<< HEAD
-        {/* Card 3 */}
-        <div className="col-12 col-sm-6 col-md-4">
-          <div className="card h-100 shadow-sm">
-            <div className="card-body">
-              <h5 className="card-title">Mobile App Design</h5>
-              <h6 className="card-subtitle mb-2 text-muted">UI/UX</h6>
-              <p className="card-text">
-                Create a sleek and modern mobile app design tailored to user experience.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-=======
         {/* ---------- PROJECT LIST ---------- */}
         <div className="container mt-4">
           {projects.length === 0 ? (
@@ -316,31 +265,33 @@ export default function ProjectsPage() {
                   className="col-sm-2 d-flex align-items-center justify-content-center border-end fw-bold"
                   style={{ background: "#f8f9fa" }}
                 >
-                  {p.name}
+                  {p.name || "N/A"}
                 </div>
+
                 <div className="col-sm-8 text-start ps-3 py-2">
-                  <div><strong>Project Description:</strong> {p.description}</div>
-                  <div><strong>Skillset:</strong> {p.skills}</div>
-                  <div><strong>Timeline:</strong> {p.timeline}</div>
-                  <div><strong>Budget:</strong> {p.budget}</div>
-                  <div><strong>Company:</strong> {p.company_name}</div>
+                  <div><strong>Project Description:</strong> {p.description || "N/A"}</div>
+                  <div><strong>Skillset:</strong> {p.skills || "N/A"}</div>
+                  <div><strong>Timeline:</strong> {p.timeline || "N/A"}</div>
+                  <div><strong>Budget:</strong> {p.budget || "N/A"}</div>
+                  <div><strong>Company:</strong> {p.company_name || "N/A"}</div>
+
                   <div>
                     <strong>Date Posted:</strong>{" "}
-                    {new Date(p.date_posted).toLocaleDateString("en-IN", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "numeric",
-                    })}
+                    {p.date_posted
+                      ? new Date(p.date_posted).toLocaleDateString("en-IN", {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                        })
+                      : "N/A"}
                   </div>
                 </div>
-                <div
-                  className="col-sm-2 d-flex align-items-center justify-content-center border-start"
-                  style={{ background: "#f8f9fa" }}
-                >
+
+                <div className="col-sm-2 d-flex align-items-center justify-content-center border-start">
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={() => handleClick(p)} // ✅ Pass project to handleClick
+                    onClick={() => handleClick(p)}
                   >
                     I'm Interested
                   </button>
@@ -351,6 +302,5 @@ export default function ProjectsPage() {
         </div>
       </div>
     </>
->>>>>>> 1a5d553bd6dbd547a21595948dd98dc8fd5a1192
   );
 }
